@@ -7,14 +7,22 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: product-service
-          uri: lb://product-service
+        - id: compras-service
+          uri: lb://compras-service
           predicates:
-            - Path=/products/**
-        - id: order-service
-          uri: lb://order-service
+            - Path=/orden-compra/**
+        - id: sharksales-monolith-ventas
+          uri: lb://sharksales-monolith
           predicates:
-            - Path=/orders/**
+              - Path=/ordenventa/**
+        - id: sharksales-monolith-proveedores
+          uri: lb://sharksales-monolith
+          predicates:
+            - Path=/proveedores/**
+        - id: sharksales-monolith-productos
+          uri: lb://sharksales-monolith
+          predicates:
+            - Path=/productos/**
 
 
 eureka:
